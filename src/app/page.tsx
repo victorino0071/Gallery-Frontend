@@ -1,4 +1,4 @@
-import DraggableGallery from "@/components/DraggableGallery";
+import DraggableGallery from "@/components/gallery/DraggableGallery";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 
