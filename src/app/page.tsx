@@ -1,13 +1,16 @@
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import Gallery from '@/components/Gallery';
+import DraggableGallery from "@/components/DraggableGallery";
+import Footer from "@/components/footer";
+import Header from "@/components/header";
 
-export default function HomePage() {
-  return (
-    <main>
-      <Header />
-      <Gallery />
-      <Footer />
-    </main>
-  );
+const HomePage = () => {
+
+    return (
+        <div>
+            <Header/>
+            <DraggableGallery/>
+            <Footer/>
+        </div>
+    );
 }
+
+export default HomePage
