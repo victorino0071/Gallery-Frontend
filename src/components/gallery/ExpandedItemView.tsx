@@ -1,9 +1,8 @@
-// Em components/gallery/ExpandedItemView.tsx
-
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ActiveItemData } from "./gallery.types";
 import { GALLERY_CONFIG } from "./gallery.config";
+import styles from "../../styles/Gallery.module.css" // Já estava aqui, agora vamos usar!
 
 interface ExpandedItemProps {
     data: ActiveItemData;
@@ -18,6 +17,7 @@ const ExpandedItemView: React.FC<ExpandedItemProps> = ({
 }) => {
     const itemRef = useRef<HTMLDivElement>(null);
 
+    // useEffect e handleClose (sem alterações na lógica)
     useEffect(() => {
         const itemEl = itemRef.current;
         if (!itemEl) return;
@@ -58,7 +58,7 @@ const ExpandedItemView: React.FC<ExpandedItemProps> = ({
 
     return (
         <div
-            className="expanded-item"
+            className={styles['expanded-item']} // MUDANÇA AQUI
             ref={itemRef}
             onClick={handleClose}
             style={{

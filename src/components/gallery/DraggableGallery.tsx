@@ -1,17 +1,20 @@
-// Em components/gallery/DraggableGallery.tsx
-
 "use client";
 
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { gsap } from "gsap";
 import { CustomEase } from "gsap/CustomEase";
 
-// Importações dos novos arquivos
+// Importações de tipos e configurações
 import { ItemData, ActiveItemData } from "./gallery.types";
 import { GALLERY_CONFIG, projectItems, imageUrls, itemSizes, trueMod } from "./gallery.config";
+
+// Importações de componentes
 import GalleryItem from "./GalleryItem";
 import ExpandedItemView from "./ExpandedItemView";
 import ProjectTitle, { ProjectTitleRef } from "./ProjectTitle";
+
+// Importação do nosso arquivo de estilos
+import styles from '../../styles/Gallery.module.css';
 
 const DraggableGallery: React.FC = () => {
     // Refs e State
@@ -28,7 +31,7 @@ const DraggableGallery: React.FC = () => {
     const [renderedItems, setRenderedItems] = useState<ItemData[]>([]);
     const [activeItemData, setActiveItemData] = useState<ActiveItemData | null>(null);
 
-    // Cálculos e Lógica
+    // Cálculos e Lógica (sem alterações nesta parte)
     const cellWidth = GALLERY_CONFIG.baseWidth + GALLERY_CONFIG.itemGap;
     const cellHeight = Math.max(GALLERY_CONFIG.smallHeight, GALLERY_CONFIG.largeHeight) + GALLERY_CONFIG.itemGap;
     const columns = 4;
@@ -100,7 +103,7 @@ const DraggableGallery: React.FC = () => {
         setActiveItemData(null);
     };
 
-    // UseEffects (lógica de eventos e animação)
+    // UseEffects (sem alterações nesta parte)
     useEffect(() => {
         gsap.registerPlugin(CustomEase);
         CustomEase.create("hop", "0.5, 0, 0, 1");
@@ -199,8 +202,8 @@ const DraggableGallery: React.FC = () => {
 
     return (
         <>
-            <div className="container" ref={containerRef} style={{ cursor: 'grab' }}>
-                <div className="canvas" ref={canvasRef}>
+            <div className={styles.container} ref={containerRef} style={{ cursor: 'grab' }}>
+                <div className={styles.canvas} ref={canvasRef}>
                     {renderedItems.map((item) => (
                         <GalleryItem
                             key={item.id}
@@ -211,7 +214,7 @@ const DraggableGallery: React.FC = () => {
                     ))}
                 </div>
 
-                <div className="overlay" ref={overlayRef} onClick={closeExpandedItem}></div>
+                <div className={styles.overlay} ref={overlayRef} onClick={closeExpandedItem}></div>
             </div>
 
             <ProjectTitle ref={projectTitleRef} />
@@ -224,10 +227,10 @@ const DraggableGallery: React.FC = () => {
                 />
             )}
 
-            <div className="page-vignette-container">
-                <div className="page-vignette"></div>
-                <div className="page-vignette-strong"></div>
-                <div className="page-vignette-extreme"></div>
+            <div className={styles['page-vignette-container']}>
+                <div className={styles['page-vignette']}></div>
+                <div className={styles['page-vignette-strong']}></div>
+                <div className={styles['page-vignette-extreme']}></div>
             </div>
         </>
     );

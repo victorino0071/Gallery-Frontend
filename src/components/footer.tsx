@@ -1,20 +1,20 @@
+import styles from '../styles/Footer.module.css';
 
-
-
-const Footer = () =>{
+const Footer = () => {
     return (
         <div>
-            <div className="footer">
-                <div className="coordinates-section">
-                    <p>34.0522° N, 118.2437° W</p>
+            <div>
+                <div className={styles.footer}>
+                    <div className={styles['info-section']}>
+                        <p> 16°28'01"S 54°34'36"O</p>
+                    </div>
                 </div>
-                <div className="info-section">
-                    <p>Est. 2025 • Summer Days</p>
-                </div>
+                
+                {/* Aplicamos a nova classe ao h1 */}
+                <h1 className={styles.thinpactLogo}>thinpact</h1>
             </div>
         </div>
     );
-}
+};
 
-
-export default Footer
+export default Footer;

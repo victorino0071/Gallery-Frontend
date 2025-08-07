@@ -1,202 +1,250 @@
-/* /src/styles/Gallery.module.css */
+
+/* --- ESTILOS DA GALERIA E OUTROS COMPONENTES --- */
 .container {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  cursor: grab;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    cursor: grab;
 }
 
 .canvas {
-  position: absolute;
-  will-change: transform;
+    position: absolute;
+    will-change: transform;
 }
 
 .item {
-  position: absolute;
-  overflow: hidden;
-  background-color: #000000;
-  cursor: pointer;
-  border-radius: var(--border-radius, 8px);
-  visibility: hidden; /* Itens são tornados visíveis via GSAP */
+    position: absolute;
+    overflow: hidden;
+    background-color: #000000;
+    cursor: pointer;
+    border-radius: var(--border-radius, 0px);
 }
 
-.itemImageContainer {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  position: relative;
+.item-image-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
 }
 
-.itemImageContainer::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-  box-shadow: inset 0 0 var(--vignette-size, 25px) rgba(0, 0, 0, 0.5);
-  z-index: 1;
+.item-image-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    box-shadow: inset 0 0 var(--vignette-size, 0px) rgba(0, 0, 0, 0.5);
+    z-index: 1;
 }
 
 .item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
-  transition: transform 0.3s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    transition: transform 0.3s ease;
 }
 
 .item:hover img {
-  transform: scale(var(--hover-scale, 1.05));
+    transform: scale(var(--hover-scale, 1.05));
 }
 
-.itemCaption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 10px;
-  z-index: 2;
-  opacity: 0; /* Inicia invisível e é animado com GSAP */
+.item-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    z-index: 2;
 }
 
-.itemName {
-  font-family: "PP Neue Montreal", sans-serif;
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: -0.03em;
-  margin-bottom: 2px;
-  position: relative;
-  overflow: hidden;
-  height: 16px;
+.project-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+    z-index: 10002;
 }
 
-.itemNumber {
-  font-family: "TheGoodMonolith", monospace;
-  color: #888888;
-  font-size: 10px;
-  font-weight: 400;
-  position: relative;
-  overflow: hidden;
-  height: 14px;
+.project-title p {
+    position: relative;
+    font-size: 4rem;
+    color: #ffffff;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    overflow: hidden;
 }
 
-/* Título do Projeto */
-.projectTitle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  text-align: center;
-  pointer-events: none;
-  z-index: 10002;
+.project-title p .word {
+    position: relative;
+    display: inline-block;
+    font-family: "PP Neue Montreal", sans-serif;
+    font-size: 36px;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    transform: translateY(0%);
+    will-change: transform;
 }
 
-.projectTitle p {
-  position: relative;
-  height: 42px;
-  color: #ffffff;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-  overflow: hidden;
+.item-name {
+    font-family: "PP Neue Montreal", sans-serif;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    margin-bottom: 2px;
+    position: relative;
+    overflow: hidden;
+    height: 16px;
 }
 
-.projectTitle p .word {
-  position: relative;
-  display: inline-block;
-  font-family: "PP Neue Montreal", sans-serif;
-  font-size: 36px;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-  transform: translateY(0%);
-  will-change: transform;
+.item-name .word {
+    position: relative;
+    display: inline-block;
+    will-change: transform;
 }
 
-/* Item Expandido */
-.expandedItem {
-  position: fixed;
-  z-index: 10000;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #000000;
-  overflow: hidden;
-  cursor: pointer;
-  border-radius: var(--border-radius, 8px);
+.item-number {
+    font-family: "TheGoodMonolith", monospace;
+    color: #888888;
+    font-size: 10px;
+    font-weight: 400;
+    position: relative;
+    overflow: hidden;
+    height: 14px;
 }
 
-.expandedItem img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
+.item-number .char {
+    position: relative;
+    display: inline-block;
+    will-change: transform;
 }
 
-/* Overlay */
+.expanded-item {
+    position: fixed;
+    z-index: 10000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #000000;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: var(--border-radius, 0px);
+}
+
+.expanded-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
 .overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #000000;
-  pointer-events: none;
-  opacity: 0;
-  z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 9999;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.7);
 }
 
 .overlay.active {
-  pointer-events: auto;
+    pointer-events: auto;
 }
 
-/* Vinheta da Página */
-.pageVignetteContainer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9998;
+.page-vignette-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998;
 }
 
-.pageVignette {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  box-shadow: inset 0 0 var(--page-vignette-size) var(--page-vignette-color);
+.page-vignette {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 var(--page-vignette-size, 0px) var(--page-vignette-color, rgba(0, 0, 0, 0.9));
 }
 
-.pageVignetteStrong {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  box-shadow: inset 0 0 var(--page-vignette-strong-size) var(--page-vignette-strong-color);
+.page-vignette-strong {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 var(--page-vignette-strong-size, 0px) var(--page-vignette-strong-color, rgba(0, 0, 0, 0.95));
 }
 
-.pageVignetteExtreme {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  box-shadow: inset 0 0 var(--page-vignette-extreme-size) var(--page-vignette-extreme-color);
+.page-vignette-extreme {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 var(--page-vignette-extreme-size, 0px) var(--page-vignette-extreme-color, rgba(0, 0, 0, 1));
 }
 
-.captionClone {
-  position: fixed;
-  z-index: 10001;
+/* Tweakpane styles */
+.tp-dfwv {
+    z-index: 10000 !important;
 }
 
-.captionClone .item-name,
-.captionClone .item-number {
-  overflow: hidden;
+.tp-rotv {
+    opacity: 0.5 !important;
+}
+
+.tp-rotv.tp-rotv-expanded {
+    opacity: 1 !important;
+}
+
+.tp-rotv.tp-rotv-collapsed {
+    opacity: 0.7 !important;
+}
+
+.caption-clone {
+    position: fixed;
+    z-index: 10002;
+}
+
+.caption-clone .item-name,
+.caption-clone .item-number {
+    overflow: hidden;
+}
+
+.item {
+    will-change: transform, opacity;
+}
+
+.canvas {
+    will-change: transform;
+}
+
+.expanded-item {
+    will-change: transform, width, height;
+}
+
+.container {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+.item-image-container img {
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }

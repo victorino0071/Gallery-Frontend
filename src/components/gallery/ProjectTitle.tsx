@@ -3,6 +3,7 @@
 import React, { useRef, useImperativeHandle, forwardRef } from "react";
 import { gsap } from "gsap";
 import SplitType from "split-type";
+import styles from '../../styles/Gallery.module.css'; // Adicionamos a importação
 
 // A interface que define as funções que o pai pode chamar
 export interface ProjectTitleRef {
@@ -17,6 +18,8 @@ const ProjectTitle = forwardRef<ProjectTitleRef, {}>((props, ref) => {
             const titleEl = titleRef.current;
             if (!titleEl) return;
 
+            // A lógica de animação permanece a mesma.
+            // O seletor '.word' é adicionado pela biblioteca SplitType e não precisa ser alterado.
             gsap.killTweensOf(titleEl.querySelectorAll(".word"));
 
             if (direction === "in") {
@@ -49,7 +52,7 @@ const ProjectTitle = forwardRef<ProjectTitleRef, {}>((props, ref) => {
     }));
 
     return (
-        <div className="project-title">
+        <div className={styles['project-title']}> {/* A classe foi atualizada aqui */}
             <p ref={titleRef}></p>
         </div>
     );

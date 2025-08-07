@@ -23,12 +23,12 @@ export const imageUrls = [
 ];
 
 export const GALLERY_CONFIG = {
-    baseWidth: 400,
+    baseWidth: 600,
     smallHeight: 330,
-    largeHeight: 500,
+    largeHeight: 400,
     itemGap: 65,
     hoverScale: 1.05,
-    expandedScale: 0.5,
+    expandedScale: 0.7,
     dragEase: 0.075,
     momentumFactor: 200,
     bufferZone: 3,

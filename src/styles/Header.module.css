@@ -1,0 +1,80 @@
+/* Estilos específicos para o componente Header */
+
+/* Container principal do cabeçalho */
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    padding: 1.5rem;
+    z-index: 10000;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: var(--spacing-base);
+}
+
+/* Definições de colunas do grid para o cabeçalho */
+.nav-section {
+    grid-column: 1 / span 3;
+}
+
+.values-section {
+    grid-column: 5 / span 2;
+}
+
+.location-section {
+    grid-column: 7 / span 2;
+}
+
+.contact-section {
+    grid-column: 9 / span 2;
+}
+
+.social-section {
+    grid-column: 11 / span 2;
+    text-align: right;
+}
+
+/* Estilos do Logo */
+.logo-container {
+    margin-bottom: var(--spacing-md);
+    display: block;
+    width: 3rem;
+    height: 1.5rem;
+    position: relative;
+}
+
+.logo-circles {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    transition: transform var(--transition-medium);
+    width: 1.4rem;
+    height: 1.4rem;
+    background-color: var(--color-text);
+    top: 50%;
+}
+
+.circle-1 {
+    left: 0;
+    transform: translate(0, -50%);
+}
+
+.circle-2 {
+    left: 0.8rem;
+    transform: translate(0, -50%);
+    mix-blend-mode: exclusion;
+}
+
+.logo-container:hover .circle-1 {
+    transform: translate(-0.5rem, -50%);
+}
+
+.logo-container:hover .circle-2 {
+    transform: translate(0.5rem, -50%);
+}

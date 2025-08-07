@@ -1,0 +1,56 @@
+/* Estilos específicos para o componente Footer */
+
+/* Container principal do rodapé */
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    padding: 1.5rem;
+    z-index: 10000;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: var(--spacing-base);
+}
+
+/* Estilo do texto dentro do rodapé */
+.footer p {
+    font-family: "TheGoodMonolith", monospace;
+}
+
+/* Seção das coordenadas no grid */
+.coordinates-section {
+    grid-column: 1 / span 3;
+    font-family: "TheGoodMonolith", monospace;
+}
+
+/* Seção de informações no grid */
+.info-section {
+    grid-column: 9 / span 4;
+    text-align: right;
+}
+
+/* ===== NOVA CLASSE PARA O LOGO ===== */
+.thinpactLogo {
+    /* Posiciona o elemento de forma fixa na tela */
+    position: fixed;
+    /* Alinha com o preenchimento (padding) do rodapé */
+    left: 0;
+    bottom: 0;
+
+    /* Garante que fique acima do rodapé (z-index: 10000) */
+    z-index: 900;
+    /* Aplica a fonte primária definida no :root */
+    font-family: var(--primary-font);
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    font-size: 8vw;
+    /* Ajustes estéticos opcionais */
+    color: var(--color-text);
+    font-size: 10rem;
+    /* Ajuste o tamanho conforme necessário */
+    margin: 0;
+    line-height: 0.7;
+    /* Remove a margem padrão do h1 */
+}

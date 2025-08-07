@@ -1,7 +1,6 @@
-// Em components/gallery/GalleryItem.tsx
-
 import React from "react";
 import { ItemData } from "./gallery.types";
+import styles from '../../styles/Gallery.module.css'; // MUDANÇA AQUI
 
 interface GalleryItemProps {
     item: ItemData;
@@ -12,7 +11,7 @@ interface GalleryItemProps {
 const GalleryItem: React.FC<GalleryItemProps> = ({ item, isVisible, onClick }) => {
     return (
         <div
-            className="item"
+            className={styles.item} // MUDANÇA AQUI
             style={{
                 width: `${item.width}px`,
                 height: `${item.height}px`,
@@ -22,14 +21,14 @@ const GalleryItem: React.FC<GalleryItemProps> = ({ item, isVisible, onClick }) =
             }}
             onClick={(e) => onClick(e.currentTarget, item)}
         >
-            <div className="item-image-container">
+            <div className={styles['item-image-container']}> {/* MUDANÇA AQUI */}
                 <img src={item.imageUrl} alt={item.title} />
             </div>
-            <div className="item-caption">
-                <div className="item-name">{item.title}</div>
-                <div className="item-number">{`#${(item.itemIndex + 1)
+            <div className={styles['item-caption']}> {/* MUDANÇA AQUI */}
+                <div className={styles['item-name']}>{item.title}</div> {/* MUDANÇA AQUI */}
+                <div className={styles['item-number']}>{`#${(item.itemIndex + 1)
                     .toString()
-                    .padStart(5, "0")}`}</div>
+                    .padStart(5, "0")}`}</div> {/* MUDANÇA AQUI */}
             </div>
         </div>
     );
