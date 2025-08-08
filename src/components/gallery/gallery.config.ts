@@ -12,6 +12,12 @@ export const projectItems = [
     "3",
     "4",
     "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10"
+    
 ];
 
 export const imageUrls = [
@@ -20,6 +26,11 @@ export const imageUrls = [
     '/images/3.png',
     '/images/4.png',
     '/images/5.png',
+    '/images/6.png',
+    '/images/7.png',
+    '/images/8.png',
+    '/images/9.png',
+    '/images/10png',
 
 ];
 
