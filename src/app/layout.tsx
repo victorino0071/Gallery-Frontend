@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import '../styles/globals.css';
 
 export const metadata: Metadata = {
-  title: 'Galeria Interativa',
-  description: 'Uma galeria interativa criada com Next.js e GSAP',
+  title: 'THINPACT SHOWCASE',
+  description: 'Apresentação do THINPACT',
 };
 
 export default function RootLayout({
