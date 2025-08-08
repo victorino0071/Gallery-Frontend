@@ -40,10 +40,11 @@
 
     /* Garante que fique acima do rodapé (z-index: 10000) */
     z-index: 900;
+    padding-bottom: 10px;
     /* Aplica a fonte primária definida no :root */
     font-family: var(--primary-font);
     text-transform: uppercase;
-    font-weight: 400;
+    font-weight: 900;
     letter-spacing: -0.02em;
     font-size: 6vw;
     /* Ajustes estéticos opcionais */
