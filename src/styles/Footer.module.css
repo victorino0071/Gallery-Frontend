@@ -43,9 +43,9 @@
     /* Aplica a fonte primária definida no :root */
     font-family: var(--primary-font);
     text-transform: uppercase;
-    font-weight: 900;
+    font-weight: 400;
     letter-spacing: -0.02em;
-    font-size: 8vw;
+    font-size: 6vw;
     /* Ajustes estéticos opcionais */
     color: var(--color-text);
     font-size: 10rem;
