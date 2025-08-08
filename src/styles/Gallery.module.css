@@ -41,6 +41,8 @@
 }
 
 .item img {
+    position: relative;
+    z-index: -1;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -247,4 +249,30 @@
 .item-image-container img {
     transform: translateZ(0);
     backface-visibility: hidden;
+}
+
+.item-image-container {
+    position: relative; 
+    isolation: isolate; 
+}
+
+.item-image-container::before {
+    content: ''; /* Pseudo-elementos sempre precisam da propriedade 'content' */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* AQUI ESTÁ A MAGIA: Cor preta com 40% de opacidade. Altere o último valor (0.4) para tornar mais escuro ou mais claro. */
+    background-color: rgba(0, 0, 0, 0.4); 
+
+    /* Garante que o overlay fique sobre a imagem, mas abaixo de outros elementos como a legenda, se necessário. */
+    z-index: 1;
+
+    /* Adiciona uma transição suave para o efeito de hover. */
+    transition: background-color 0.3s ease;
+}
+.item:hover .item-image-container::before {
+    background-color: rgba(0, 0, 0, 0.1); /* Reduz o escurecimento no hover */
 }

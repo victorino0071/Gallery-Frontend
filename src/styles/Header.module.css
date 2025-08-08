@@ -1,6 +1,6 @@
 /* Estilos específicos para o componente Header */
 
-/* Container principal do cabeçalho */
+/* MUDANÇA PRINCIPAL: De Grid para Flexbox */
 .header {
     position: absolute;
     top: 0;
@@ -8,42 +8,43 @@
     width: 100vw;
     padding: 1.5rem;
     z-index: 10000;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: var(--spacing-base);
+
+    /* Propriedades Flexbox para o layout horizontal */
+    display: flex;
+    justify-content: space-between; /* ISSO FAZ A MÁGICA: Joga o logo para a esquerda e a outra seção para a direita */
+    align-items: flex-start; /* Alinha os itens no topo. Use 'center' se preferir alinhamento vertical centralizado. */
 }
 
-/* Definições de colunas do grid para o cabeçalho */
-.nav-section {
-    grid-column: 1 / span 3;
+/* NOVO: Classe para agrupar os elementos da direita */
+.right-section {
+    display: flex;
+    gap: 3rem; /* Adiciona um espaço horizontal entre as seções "Slogan" e "Integrantes" */
+    text-align: right; /* Mantém o texto alinhado à direita dentro de cada seção */
 }
 
+
+/* REMOVIDO: As definições de coluna do grid não são mais necessárias */
+/* .nav-section, .location-section, .contact-section, .social-section {
+    /* Todas as propriedades 'grid-column' foram removidas */
+/* } */
+
+/* .values-section não precisa mais da propriedade grid-column */
 .values-section {
-    grid-column: 5 / span 2;
+    /* grid-column: 5 / span 2;  <-- REMOVIDO */
+    /* text-align: right;  <-- Movido para .right-section para aplicar a ambas as colunas */
 }
 
-.location-section {
-    grid-column: 7 / span 2;
-}
 
-.contact-section {
-    grid-column: 9 / span 2;
-}
-
-.social-section {
-    grid-column: 11 / span 2;
-    text-align: right;
-}
-
-/* Estilos do Logo */
+/* Estilos do Logo (sem alterações) */
 .logo-container {
-    margin-bottom: var(--spacing-md);
+    /* margin-bottom: var(--spacing-md); <-- Removi a margem para melhor alinhamento com flex */
     display: block;
     width: 3rem;
     height: 1.5rem;
     position: relative;
 }
 
+/* ... O resto do seu CSS continua igual ... */
 .logo-circles {
     position: relative;
     width: 100%;
@@ -77,4 +78,11 @@
 
 .logo-container:hover .circle-2 {
     transform: translate(0.5rem, -50%);
+}
+.values-section li {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.01rem;
+    -webkit-font-smoothing: antialiased;
+    margin-bottom: 4px; /* Adiciona um pequeno espaço entre os itens */
 }

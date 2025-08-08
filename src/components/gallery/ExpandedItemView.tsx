@@ -4,6 +4,7 @@ import { ActiveItemData } from "./gallery.types";
 import { GALLERY_CONFIG } from "./gallery.config";
 import styles from "../../styles/Gallery.module.css" // Já estava aqui, agora vamos usar!
 
+
 interface ExpandedItemProps {
     data: ActiveItemData;
     onStartClose: () => void;
@@ -22,8 +23,13 @@ const ExpandedItemView: React.FC<ExpandedItemProps> = ({
         const itemEl = itemRef.current;
         if (!itemEl) return;
 
+        const targetScale =
+            data.height === GALLERY_CONFIG.largeHeight
+                ? GALLERY_CONFIG.expandedScaleLarge
+                : GALLERY_CONFIG.expandedScale;
+        
         const viewportWidth = window.innerWidth;
-        const targetWidth = viewportWidth * GALLERY_CONFIG.expandedScale;
+        const targetWidth = viewportWidth * targetScale;
         const aspectRatio = data.height / data.width;
         const targetHeight = targetWidth * aspectRatio;
 

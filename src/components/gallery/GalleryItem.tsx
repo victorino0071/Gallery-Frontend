@@ -4,11 +4,10 @@ import styles from '../../styles/Gallery.module.css'; // MUDANÇA AQUI
 
 interface GalleryItemProps {
     item: ItemData;
-    isVisible: boolean;
     onClick: (element: HTMLDivElement, itemData: ItemData) => void;
 }
 
-const GalleryItem: React.FC<GalleryItemProps> = ({ item, isVisible, onClick }) => {
+const GalleryItem: React.FC<GalleryItemProps> = ({ item, onClick }) => {
     return (
         <div
             className={styles.item} // MUDANÇA AQUI
@@ -17,7 +16,6 @@ const GalleryItem: React.FC<GalleryItemProps> = ({ item, isVisible, onClick }) =
                 height: `${item.height}px`,
                 left: `${item.x}px`,
                 top: `${item.y}px`,
-                opacity: isVisible ? 1 : 0,
             }}
             onClick={(e) => onClick(e.currentTarget, item)}
         >

@@ -36,6 +36,7 @@ const DraggableGallery: React.FC = () => {
     const cellHeight = Math.max(GALLERY_CONFIG.smallHeight, GALLERY_CONFIG.largeHeight) + GALLERY_CONFIG.itemGap;
     const columns = 4;
 
+
     const getItemSize = useCallback((row: number, col: number) => {
         const sizeIndex = trueMod(row * columns + col, itemSizes.length);
         return itemSizes[sizeIndex];
@@ -208,7 +209,7 @@ const DraggableGallery: React.FC = () => {
                         <GalleryItem
                             key={item.id}
                             item={item}
-                            isVisible={!activeItemData}
+                           
                             onClick={(element, itemData) => !mouseHasMoved.current && expandItem(element, itemData)}
                         />
                     ))}
@@ -217,7 +218,6 @@ const DraggableGallery: React.FC = () => {
                 <div className={styles.overlay} ref={overlayRef} onClick={closeExpandedItem}></div>
             </div>
 
-            <ProjectTitle ref={projectTitleRef} />
 
             {activeItemData && (
                 <ExpandedItemView
