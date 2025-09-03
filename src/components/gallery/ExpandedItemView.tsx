@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ActiveItemData } from "./gallery.types";
 import { GALLERY_CONFIG } from "./gallery.config";
 import styles from "../../styles/Gallery.module.css" // Já estava aqui, agora vamos usar!
+import  ProjectTitle, { ProjectTitleRef }from "./ProjectTitle";
 
 
 interface ExpandedItemProps {
@@ -18,7 +19,7 @@ const ExpandedItemView: React.FC<ExpandedItemProps> = ({
 }) => {
     const itemRef = useRef<HTMLDivElement>(null);
 
-    // useEffect e handleClose (sem alterações na lógica)
+    const titleRef = useRef<ProjectTitleRef>(null);
     useEffect(() => {
         const itemEl = itemRef.current;
         if (!itemEl) return;
@@ -45,10 +46,19 @@ const ExpandedItemView: React.FC<ExpandedItemProps> = ({
         });
     }, [data]);
 
+    useEffect(() => {
+        if (titleRef.current) {
+            titleRef.current.animate(data.title, "in");
+        }
+    }, [data.title]); 
+
     const handleClose = () => {
         const itemEl = itemRef.current;
         if (!itemEl) return;
         onStartClose();
+        if (titleRef.current) {
+            titleRef.current.animate(data.title, "out");
+        }
         gsap.to(itemEl, {
             top: data.rect.top,
             left: data.rect.left,
@@ -62,9 +72,11 @@ const ExpandedItemView: React.FC<ExpandedItemProps> = ({
         });
     };
 
+
+
     return (
         <div
-            className={styles['expanded-item']} // MUDANÇA AQUI
+            className={styles['expanded-item']} 
             ref={itemRef}
             onClick={handleClose}
             style={{
@@ -75,6 +87,7 @@ const ExpandedItemView: React.FC<ExpandedItemProps> = ({
                 height: `${data.rect.height}px`,
             }}
         >
+            <ProjectTitle ref={titleRef}/>
             <img src={data.imageUrl} alt={data.title}/>
         </div>
     );

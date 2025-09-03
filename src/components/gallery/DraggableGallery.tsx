@@ -22,6 +22,7 @@ const DraggableGallery: React.FC = () => {
     const canvasRef = useRef<HTMLDivElement>(null);
     const overlayRef = useRef<HTMLDivElement>(null);
     const projectTitleRef = useRef<ProjectTitleRef>(null);
+    const [isClosing, setIsClosing] = useState(false);
 
     const pos = useRef({ currentX: 0, currentY: 0, targetX: 0, targetY: 0 });
     const dragInfo = useRef({ startX: 0, startY: 0, isDragging: false, velocityX: 0, velocityY: 0, lastDragTime: 0 });
@@ -96,12 +97,25 @@ const DraggableGallery: React.FC = () => {
 
     const closeExpandedItem = () => {
         if (!activeItemData) return;
+        setIsClosing(true);
         projectTitleRef.current?.animate(activeItemData.title, "out");
         gsap.to(overlayRef.current, { opacity: 0, duration: GALLERY_CONFIG.overlayDuration, ease: "power2.inOut" });
     };
 
     const onExpansionAnimationComplete = () => {
-        setActiveItemData(null);
+        if (canvasRef.current) {
+        // Captura a posição atual aplicada no transform do canvas
+        const matrix = new DOMMatrixReadOnly(
+            window.getComputedStyle(canvasRef.current).transform
+        );
+        pos.current.currentX = matrix.m41; // deslocamento X atual
+        pos.current.currentY = matrix.m42; // deslocamento Y atual
+        pos.current.targetX = pos.current.currentX;
+        pos.current.targetY = pos.current.currentY;
+    }
+
+    setActiveItemData(null);
+    setIsClosing(false);
     };
 
     // UseEffects (sem alterações nesta parte)
@@ -117,9 +131,10 @@ const DraggableGallery: React.FC = () => {
             pos.current.currentX += (pos.current.targetX - pos.current.currentX) * ease;
             pos.current.currentY += (pos.current.targetY - pos.current.currentY) * ease;
 
-            if (canvasRef.current && !activeItemData) {
+            if (canvasRef.current && (!activeItemData || isClosing)) {
                 canvasRef.current.style.transform = `translate(${pos.current.currentX}px, ${pos.current.currentY}px) translateZ(0)`;
             }
+
 
             if (Math.abs(pos.current.targetX - pos.current.currentX) > 1 || Math.abs(pos.current.targetY - pos.current.currentY) > 1) {
                 updateVisibleItems();

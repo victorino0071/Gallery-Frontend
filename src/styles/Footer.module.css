@@ -31,7 +31,7 @@
 }
 
 /* ===== NOVA CLASSE PARA O LOGO ===== */
-.thinpactLogo {
+.galleryLogo p {
     /* Posiciona o elemento de forma fixa na tela */
     position: fixed;
     /* Alinha com o preenchimento (padding) do rodapé */

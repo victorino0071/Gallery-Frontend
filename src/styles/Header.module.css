@@ -1,6 +1,6 @@
 /* Estilos específicos para o componente Header */
 
-/* MUDANÇA PRINCIPAL: De Grid para Flexbox */
+/* Layout principal do Header com Flexbox */
 .header {
     position: absolute;
     top: 0;
@@ -8,87 +8,84 @@
     width: 100vw;
     padding: 1.5rem;
     z-index: 10000;
-
-    /* Propriedades Flexbox para o layout horizontal */
     display: flex;
-    justify-content: space-between; /* ISSO FAZ A MÁGICA: Joga o logo para a esquerda e a outra seção para a direita */
-    align-items: flex-start; /* Alinha os itens no topo. Use 'center' se preferir alinhamento vertical centralizado. */
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
-/* NOVO: Classe para agrupar os elementos da direita */
+/* Agrupador para os elementos da direita */
 .right-section {
     display: flex;
-    gap: 3rem; /* Adiciona um espaço horizontal entre as seções "Slogan" e "Integrantes" */
-    text-align: right; /* Mantém o texto alinhado à direita dentro de cada seção */
+    gap: 3rem;
+    text-align: right;
 }
 
-
-/* REMOVIDO: As definições de coluna do grid não são mais necessárias */
-/* .nav-section, .location-section, .contact-section, .social-section {
-    /* Todas as propriedades 'grid-column' foram removidas */
-/* } */
-
-/* .values-section não precisa mais da propriedade grid-column */
+/* Seção de valores (integrantes) */
 .values-section {
-    /* grid-column: 5 / span 2;  <-- REMOVIDO */
-    /* text-align: right;  <-- Movido para .right-section para aplicar a ambas as colunas */
+    /* Nenhuma propriedade de layout específica necessária aqui, pois é controlada pelo .right-section */
 }
 
+.values-section li {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.01rem;
+    -webkit-font-smoothing: antialiased;
+    margin-bottom: 4px;
+}
 
-/* Estilos do Logo (sem alterações) */
+/* --- Início dos Estilos da Logo Atualizada --- */
+
+/* Container principal da logo */
 .logo-container {
-    /* margin-bottom: var(--spacing-md); <-- Removi a margem para melhor alinhamento com flex */
     display: block;
     width: 3rem;
     height: 1.5rem;
     position: relative;
-    
-}
-.logo-container svg {
-    width: 100%;
-    height: 100%;
-    display: block; /* evita espaços indesejados */
+    cursor: pointer; /* Adicionado para indicar que é um elemento interativo */
 }
 
-/* ... O resto do seu CSS continua igual ... */
-.logo-circles {
+/* Container dos quadrados (anteriormente .logo-circles) */
+.logo-squares {
     position: relative;
     width: 100%;
     height: 100%;
 }
 
-.circle {
+/* Estilo base para cada quadrado (anteriormente .circle) */
+.square {
     position: absolute;
-    border-radius: 50%;
-    transition: transform var(--transition-medium);
+    /* border-radius: 50%; <-- REMOVIDO! Esta linha foi removida para formar quadrados. */
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Transição suave para a animação */
     width: 1.4rem;
     height: 1.4rem;
     background-color: var(--color-text);
     top: 50%;
 }
 
-.circle-1 {
+/* Posição inicial do primeiro quadrado (anteriormente .circle-1) */
+.square-1 {
     left: 0;
-    transform: translate(0, -50%);
+    rotate: 45deg; /* Gira o quadrado 45 graus para parecer um losango */
+    transform: translate(0, -50%) rotate(45deg);
 }
 
-.circle-2 {
+/* Posição inicial do segundo quadrado (anteriormente .circle-2) */
+.square-2 {
     left: 0.8rem;
-    transform: translate(0, -50%);
+    transform: translate(0, -50%) rotate(45deg);
     mix-blend-mode: exclusion;
 }
 
-.logo-container:hover .circle-1 {
-    transform: translate(-0.5rem, -50%);
+/* ATUALIZADO: Animação de hover para o primeiro quadrado */
+.logo-container:hover .square-1 {
+    /* Move para a esquerda E gira 90 graus no sentido horário */
+    transform: translate(-0.5rem, -50%) rotate(90deg);
 }
 
-.logo-container:hover .circle-2 {
-    transform: translate(0.5rem, -50%);
+/* ATUALIZADO: Animação de hover para o segundo quadrado */
+.logo-container:hover .square-2 {
+    /* Move para a direita E gira 90 graus no sentido anti-horário */
+    transform: translate(0.5rem, -50%) rotate(-90deg);
 }
-.values-section li {
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: -0.01rem;
-    -webkit-font-smoothing: antialiased;
-    margin-bottom: 4px; /* Adiciona um pequeno espaço entre os itens */
-}
+
+/* --- Fim dos Estilos da Logo --- */

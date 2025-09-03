@@ -1,5 +1,3 @@
-// Em components/gallery/gallery.config.ts
-import { StaticImageData } from 'next/image';
 import { ItemSize } from './gallery.types';
 
 
@@ -7,39 +5,34 @@ import { ItemSize } from './gallery.types';
 // --- DADOS E CONFIGURAções FIXAS ---
 
 export const projectItems = [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10"
-    
+    "lonely road",
+    "holding sun",
+    "Black Cat",
+    "Great Field",
+    "cabin in the forest",
+    "Owl Face",
+    "Building",
+    "Green Ocean",
 ];
 
 export const imageUrls = [
-    '/images/1.png',
-    '/images/2.png',
-    '/images/3.png',
-    '/images/4.png',
-    '/images/5.png',
-    '/images/6.png',
-    '/images/7.png',
-    '/images/8.png',
-    '/images/9.png',
-    '/images/10png',
+    '/images/1.jpeg',
+    '/images/2.jpeg',
+    '/images/3.jpeg',
+    '/images/4.jpeg',
+    '/images/5.jpeg',
+    '/images/6.jpeg',
+    '/images/7.jpeg',
+    '/images/8.jpeg'
 
 ];
 
 export const GALLERY_CONFIG = {
-    baseWidth: 550,        // Largura fixa para todos os itens. Ajuste conforme necessário.
+    baseWidth: 700,        // Largura fixa para todos os itens. Ajuste conforme necessário.
     
     // Alturas calculadas para manter a proporção das imagens originais
-    smallHeight: 603,      // Altura correspondente à imagem de 934x1024
-    largeHeight: 391, 
+    smallHeight: 800,      // Altura correspondente à imagem de 934x1024
+    largeHeight: 500, 
     itemGap: 65,
     hoverScale: 1.05,
     expandedScale: 0.4,

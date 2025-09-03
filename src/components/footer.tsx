@@ -11,7 +11,9 @@ const Footer = () => {
                 </div>
                 
 
-                <h1 className={styles.thinpactLogo}>thinpact</h1>
+                <h1 className={styles.galleryLogo}>
+                    <p>GALLERY</p>
+                </h1>
             </div>
         </div>
     );

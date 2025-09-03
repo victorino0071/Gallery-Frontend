@@ -80,6 +80,7 @@
     color: #ffffff;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     overflow: hidden;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .project-title p .word {
